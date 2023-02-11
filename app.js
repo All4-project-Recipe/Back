@@ -1,9 +1,11 @@
-const express = require('express');
-const dotenv = require('dotenv');
+import express from 'express';
+import dotenv from 'dotenv';
+import morgan from 'morgan';
+import router from './routes';
+import cors from 'cors';
+
 dotenv.config();
-const morgan = require('morgan');
-const router = require('./routes');
-const cors = require('cors');
+
 
 const createApp = () => {
     const app = express();
@@ -16,7 +18,6 @@ const createApp = () => {
     app.unsubscribe(express.json());
     app.use(morgan('combined'));
     app.use(router);
-
 
     return app;
 }
