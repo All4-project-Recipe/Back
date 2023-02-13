@@ -14,6 +14,8 @@ const signInKaKao = async (kakaoToken) => {
     const name = data.properties.nickname;
     const kakaoId = data.id;
 
+
+
     if(!email || !name || !kakaoId) throw new error('KEY_ERROR', 400);
 
     const user = await kakaoLoginDAO.getUserById(kakaoId);
@@ -22,7 +24,7 @@ const signInKaKao = async (kakaoToken) => {
         await kakaoLoginDAO.signUp(email, name, kakaoId);
     }
 
-    return jwt.sign({ kakao_id : user[0].kakao_id }, process.env.SECRET_KEY)
+    return jwt.sign({ kakao_id : user.kakao_id }, process.env.SECRET_KEY)
 }
 
 module.exports = {

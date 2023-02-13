@@ -14,5 +14,6 @@ dataSource.initialize().then(() => {
     console.log("Data Source has been initialized!");
 });
   
-module.export = dataSource;
+module.exports = dataSource;
+
 
