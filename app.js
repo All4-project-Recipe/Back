@@ -5,9 +5,6 @@ const morgan = require('morgan');
 const router = require('./routes');
 const cors = require('cors');
 
-
-
-
 const createApp = () => {
     const app = express();
     const corsOption = {
@@ -22,7 +19,6 @@ const createApp = () => {
 
     return app;
 };
-
 
 module.exports = {
     createApp,
