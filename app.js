@@ -5,6 +5,9 @@ const morgan = require('morgan');
 const router = require('./routes');
 const cors = require('cors');
 
+
+
+
 const createApp = () => {
     const app = express();
     const corsOption = {
@@ -17,8 +20,10 @@ const createApp = () => {
     app.use(morgan('combined'));
     app.use(router);
 
-
     return app;
-}
+};
 
-module.exports = { createApp };
+
+module.exports = {
+    createApp,
+}
