@@ -1,10 +1,11 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import morgan from 'morgan';
-import router from './routes';
-import cors from 'cors';
-
+const express = require('express');
+const dotenv = require('dotenv');
 dotenv.config();
+const morgan = require('morgan');
+const router = require('./routes');
+const cors = require('cors');
+
+
 
 
 const createApp = () => {
@@ -20,6 +21,9 @@ const createApp = () => {
     app.use(router);
 
     return app;
-}
+};
 
-module.exports = { createApp };
+
+module.exports = {
+    createApp,
+}
