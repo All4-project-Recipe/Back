@@ -17,5 +17,7 @@ INSERT INTO step (recipe_id, recipe_num, description) VALUES
 (2, 3, "오일이 잘 묻을 수 있도록 이리저리 흔들어준다"), (2, 4, "에어프라이어에 200도에서 20분 구워주기 고구마의 크기에 따라 굽기 정도가 틀릴 수 있으니 굽는 시간이 달라질 수 있다"),
 (2, 5, "노릇하게 잘 구워진 고구마~ 그냥 요래 먹어도 맛있다^^");
 
+INSERT INTO review (writer, recipe_id, description, rating) VALUES (1, 1, "존맛", 5), (2, 1, "노맛", 1);
+
 -- migrate:down
 
