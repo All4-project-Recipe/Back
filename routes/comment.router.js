@@ -1,11 +1,11 @@
 const express = require('express');
 
 const {
-  getAllRecipe,
-} = require('../controllers/recipeController');
+  createComment,
+} = require('../controllers/commentController');
 
 const router = express.Router();
 
-router.post("/", getAllRecipe);
+router.post("/", createComment);
 
 module.exports = router;

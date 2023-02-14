@@ -1,5 +1,12 @@
 const { yellow, red, blue, green } = require('cli-color');
 
+const checkDataIsNotEmpty = (targetData) => {
+  Object.keys(targetData).forEach(key => {
+    if (!targetData[key])
+      throw {status: 400, message: `plz fill ${key}`};
+  });
+}
+
 const bodyText = (req) => {  
   let bodyText = '';
   if (req.method !== 'GET') {
@@ -40,5 +47,6 @@ const morganCustomFormat = (tokens, req, res) => {
 }
 
 module.exports = {
+  checkDataIsNotEmpty,
   morganCustomFormat,
 }

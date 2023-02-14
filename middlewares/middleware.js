@@ -2,6 +2,9 @@ const express = require('express');
 const multer = require('multer');
 const fs = require('fs');
 
+const NODE_ENV = process.env.NODE_ENV;
+const appendPath = NODE_ENV? `${NODE_ENV}`: '.';
+
 const getTempDir = () => {
   return `${__dirname}/../../uploads/${appendPath}/temp`
 }
