@@ -9,8 +9,9 @@ const {
 const router = express.Router();
 
 router.post("", asyncWrap(createReview));
-router.post("/update", asyncWrap(updateReview));
+router.patch("", asyncWrap(updateReview));
 router.delete("", asyncWrap(deleteReview));
 router.get("", asyncWrap(getAllReview));
+
 
 module.exports = router;

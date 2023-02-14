@@ -11,10 +11,10 @@ const createReview = async (writer, recipe_id, rating, description) => {
 
 const updateReview = async (writer, recipe_id, rating, description) => {
   await database.query(`
-    UPDATE SET
-      rating = (?), description = (?)
+    UPDATE review SET
+      rating = ?, description = (?)
     WHERE
-      writer = (?) AND recipe_id = (?)
+      writer = ? AND recipe_id = ?
   `, [rating, description, writer, recipe_id]);
 }
 
@@ -23,7 +23,7 @@ const deleteReview = async (writer, recipe_id) => {
     DELETE FROM
       review
     WHERE
-      writer = (?) AND recipe_id = (?)
+      writer = ? AND recipe_id = ?
   `, [writer, recipe_id]);
 }
 

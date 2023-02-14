@@ -14,7 +14,7 @@ const updateComment = async (writer, recipe_id, description) => {
     UPDATE comment
       SET description = (?)
     WHERE
-      writer = (?) AND recipe_id = (?)
+      writer = ? AND recipe_id = ?
   `, [description, writer, recipe_id]);
 }
 
@@ -23,7 +23,7 @@ const deleteComment = async (writer, recipe_id) => {
     DELETE FROM
       comment
     WHERE
-      writer = (?) AND recipe_id = (?)
+      writer = ? AND recipe_id = ?
   `, [writer, recipe_id]);
 }
 
