@@ -11,9 +11,9 @@ CREATE TABLE recipe (
     title VARCHAR(100),
     writer VARCHAR(30) REFERENCES user(id),
     description VARCHAR(2000),
-    amount INTEGER,
-    spend_time INTEGER,
-    level INTEGER,
+    amount varchar(50),
+    spend_time varchar(50),
+    level varchar(50),
     scrap_num INTEGER,
     tip VARCHAR(2000),
     created_at timestamp default now()
