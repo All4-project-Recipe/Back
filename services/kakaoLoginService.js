@@ -14,11 +14,10 @@ const signInKaKao = async (kakaoToken) => {
   const name = data.properties.nickname;
   const kakaoId = data.id;
 
-
-
   if (!email || !name || !kakaoId) throw new error('KEY_ERROR', 400);
 
   const user = await kakaoLoginDAO.getUserById(kakaoId);
+
 
   if (!user) {
     await kakaoLoginDAO.signUp(email, name, kakaoId);

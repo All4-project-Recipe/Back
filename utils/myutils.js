@@ -1,5 +1,16 @@
 const { yellow, red, blue, green } = require('cli-color');
 
+const asyncWrap = (asyncController) => {
+  return async (...[req, res, next]) => {
+		  try {
+        await asyncController(req, res, next)
+      }
+      catch(error) {
+        next(error);
+      }
+  };
+}
+
 const checkDataIsNotEmpty = (targetData) => {
   Object.keys(targetData).forEach(key => {
     if (!targetData[key])
@@ -49,4 +60,5 @@ const morganCustomFormat = (tokens, req, res) => {
 module.exports = {
   checkDataIsNotEmpty,
   morganCustomFormat,
+  asyncWrap,
 }
