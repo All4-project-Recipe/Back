@@ -17,8 +17,9 @@ const createApp = () => {
     app.use(morgan('combined'));
     app.use(router);
 
-
     return app;
-}
+};
 
-module.exports = { createApp };
+module.exports = {
+    createApp,
+}

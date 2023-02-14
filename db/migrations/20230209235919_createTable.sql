@@ -1,7 +1,9 @@
 -- migrate:up
 CREATE TABLE user (
     id INTEGER PRIMARY KEY auto_increment,
-    name VARCHAR(200)
+    name VARCHAR(200),
+    email VARCHAR(80),
+    kakao_id VARCHAR(30)
 );
 
 CREATE TABLE recipe (
