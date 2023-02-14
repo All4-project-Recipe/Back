@@ -1,7 +1,7 @@
 const database = require('./database');
 
 const getUserById = async kakaoId => {
-    console.log("1");
+  
     const [user] = await database.query(
       `
       SELECT
@@ -19,7 +19,6 @@ const getUserById = async kakaoId => {
 };
 
 const signUp = async (email, name, kakaoId) => {
-  console.log("2");
   return await database.query(
     `
     INSERT INTO user (
