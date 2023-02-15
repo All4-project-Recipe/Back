@@ -19,7 +19,6 @@ const errorHandler = (err, req, res, next) => {
     .json({ message: responseInfo.message || '' });
 };
 
-
 const getTempDir = () => {
   return `${__dirname}/../../uploads/${appendPath}/temp`
 }
@@ -60,5 +59,5 @@ module.exports = {
   getTempDir,
   getUploadRootDir,
   makeUploadFolder,
-  errorHandler
+  errorHandler,
 }
