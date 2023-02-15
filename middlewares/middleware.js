@@ -1,9 +1,24 @@
 const express = require('express');
 const multer = require('multer');
 const fs = require('fs');
+const { yellow, red, blue, green } = require('cli-color');
 
 const NODE_ENV = process.env.NODE_ENV;
 const appendPath = NODE_ENV? `${NODE_ENV}`: '.';
+
+const errorHandler = (err, req, res, next) => {
+  // 흐름상 에러가 검출되면 로그 표시 및 클라이언트에게 전달
+  let responseInfo = err;
+  if (err.sqlMessage) {
+    console.log(err.sqlMessage);
+    responseInfo = { message: 'failed', status: 500, ...err };
+  }
+  console.log(`${red("ERR\t|")}`, err);
+  res
+    .status(responseInfo.status || 500)
+    .json({ message: responseInfo.message || '' });
+};
+
 
 const getTempDir = () => {
   return `${__dirname}/../../uploads/${appendPath}/temp`
@@ -45,4 +60,5 @@ module.exports = {
   getTempDir,
   getUploadRootDir,
   makeUploadFolder,
+  errorHandler
 }
