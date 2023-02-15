@@ -1,8 +1,8 @@
 const recipeService = require('../services/recipeService');
 
-const getAllRecipe = (req, res) => {
-  const result = recipeService.getAllRecipe();
-  res.status(200).json({ message: result });
+const getAllRecipe = async (req, res) => {
+  const result = await recipeService.getAllRecipe();
+  res.status(200).json({ data: result });
 }
 
 module.exports = {

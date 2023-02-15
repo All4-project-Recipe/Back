@@ -6,6 +6,6 @@ const {
 
 const router = express.Router();
 
-router.post("/", getAllRecipe);
+router.get("", getAllRecipe);
 
 module.exports = router;

@@ -3,6 +3,8 @@ const { signInKaKao }  = require('../controllers/kakaoLoginController.js');
 
 const router = express.Router();
 
-router.post('/login', signInKaKao);
+
+
+router.get('/login', signInKaKao);
 
 module.exports = router;
