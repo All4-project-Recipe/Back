@@ -8,18 +8,15 @@ const kakao = {
 
 
 const signInKaKao = async (req, res) => {
-    //const headers = req.headers['authorization'];
-    //const kakaoToken = headers.split(" ")[1];
+    // const headers = req.headers['authorization'];
+    // const kakaoToken = headers.split(" ")[1];
 
-    const kakaoAuthURL =  `https://kauth.kakao.com/oauth/authorize?client_id=${kakao.clientID}&redirect_uri=${kakao.redirectUri}&response_type=code&scope=profile,account_email`;
 
-    res.redirect(kakaoAuthURL);
+    const kakaoToken = "2pDx-WKZ451qM9Yk3Q3tT0mr4vCBmoHC0_uhNL7LCj11GwAAAYZVzJSK";
 
-    // const kakaoToken = "W6FajyYnGQ9bfs-g6IllyRjluKZEBRBmVl2CmmLaCj11nAAAAYZPVJTu";
+    const accessToken = await kakaoLoginService.signInKaKao(kakaoToken);
 
-    // const accessToken = await kakaoLoginService.signInKaKao(kakaoToken);
-
-    // return res.status(200).json({ accessToken: accessToken });
+    return res.status(200).json({ accessToken: accessToken });
 }
 
 
