@@ -1,13 +1,22 @@
 const recipeDAO = require('../models/recipeDAO');
 
 const getAllRecipe = async () => {
-  console.log("2");
   const result = await recipeDAO.getAllRecipe();
-  console.log("3");
-  
+
   return result;
+}
+
+const getRecipeById = async (id) => {
+  const result = await recipeDAO.getRecipeById(id);
+  return result;
+}
+
+const createRecipe = async (writer, title, description, amount, spend_time, level, thumbnail, ingredients, step) => {
+  await recipeDAO.createRecipe(writer, title, description, amount, spend_time, level, thumbnail, ingredients, step);
 }
 
 module.exports = {
   getAllRecipe,
+  getRecipeById,
+  createRecipe,
 }

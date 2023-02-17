@@ -15,7 +15,7 @@ CREATE TABLE recipe (
     spend_time varchar(50),
     level varchar(50),
     scrap_num INTEGER,
-    tip VARCHAR(2000),
+    img_url VARCHAR(300),
     created_at timestamp default now()
 );
 
@@ -30,8 +30,7 @@ CREATE TABLE step (
     id INTEGER PRIMARY KEY auto_increment,
     recipe_id INTEGER REFERENCES recipe(id),
     recipe_num INTEGER,
-    description VARCHAR(1000),
-    img_url VARCHAR(100)
+    description VARCHAR(1000)
 );
 
 CREATE TABLE comment (
