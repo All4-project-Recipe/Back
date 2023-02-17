@@ -41,7 +41,7 @@ const storage = multer.diskStorage({
     cb(null, 'uploads');
   },
   filename: function (req, file, cb) {
-    cb(null, file)
+    cb(null, file.originalname);
   }
 })
   
@@ -49,9 +49,11 @@ const upload = multer({ storage: storage, fileFilter });
   
 const makeUploadFolder = () => {
     try {
+      console.log(getTempDir());
       fs.readdirSync(getTempDir())
     } catch (e) {
       console.log("업로드 폴더를 생성합니다.");
+      console.log(getTempDir());
       fs.mkdirSync(getTempDir(), { recursive: true });
     }
 }
