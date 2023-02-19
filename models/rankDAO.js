@@ -1,6 +1,6 @@
 const database = require('./database');
 
-const rateRanking = async () => {
+const rateRanking = async (test) => {
   const result = await database.query(`
     SELECT
       r.*,
@@ -18,7 +18,7 @@ const rateRanking = async () => {
       GROUP BY
         recipe_id) AS rate2 ON r.id = rate2.recipe_id
     ORDER BY
-      avgrating desc
+      ${test}
   `)
   .then((answer) => {
     return [...answer].map((item)=> {

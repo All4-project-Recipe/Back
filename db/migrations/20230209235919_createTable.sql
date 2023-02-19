@@ -1,6 +1,8 @@
 -- migrate:up
 CREATE TABLE user (
     id INTEGER PRIMARY KEY auto_increment,
+    user_Id VARCHAR(20),
+    password VARCHAR(100),
     name VARCHAR(200),
     email VARCHAR(80),
     kakao_id VARCHAR(30)
