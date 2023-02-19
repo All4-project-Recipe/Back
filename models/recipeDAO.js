@@ -11,13 +11,13 @@ const getAllRecipe = async () => {
       r.spend_time,
       r.level,
       r.scrap_num,
-      r.tip,
       i.igd,
       c.writer,
       c.description,
       c.created_at,
       st.step,
       review.rv,
+      r.hit,
       review.avgRating,
       r.created_at
     FROM 
@@ -42,37 +42,47 @@ const getAllRecipe = async () => {
       (SELECT
         recipe_id,
         avg(rating) AS avgRating,
-        GROUP_CONCAT(JSON_OBJECT('writer', writer, 'description', description, 'rating', rating)) AS rv
+        GROUP_CONCAT(JSON_OBJECT('writer', user.name, 'description', description, 'rating', rating)) AS rv
       FROM
         review
+      JOIN user ON user.id = review.writer
       GROUP BY
         recipe_id) AS review ON r.id = review.recipe_id
   `)
   .then((answer) => {
     return [...answer].map((item)=> {
-      return {...item, igd: JSON.parse('[' + item.igd + ']'), step: JSON.parse('[' + item.step + ']'), rv: JSON.parse('[' + item.rv + ']')}
-    })
+      return {...item, igd: JSON.parse('[' + item.igd + ']'), step: JSON.parse('[' + item.step + ']'), rv: JSON.parse('[' + item.rv + ']')}}
+    )
   });
   return result;
 }
 
 const getRecipeById = async (id) => {
+
+  database.query(`
+    UPDATE
+      recipe
+    SET
+      hit = hit + 1
+    WHERE recipe.id = ?
+  `,[id])
+
   const result = await database.query(`
     SELECT DISTINCT
       r.id,
       r.title,
       user.name,
-      r.description AS recipe_description,
+      r.description as recipe_description,
       r.amount,
       r.spend_time,
       r.level,
       r.scrap_num,
-      r.tip,
       i.igd,
       c.writer,
       c.description,
       c.created_at,
       st.step,
+      r.hit,
       review.rv,
       review.avgRating,
       r.created_at
@@ -98,9 +108,10 @@ const getRecipeById = async (id) => {
       (SELECT
         recipe_id,
         avg(rating) AS avgRating,
-        GROUP_CONCAT(JSON_OBJECT('writer', writer, 'description', description, 'rating', rating)) AS rv
+        GROUP_CONCAT(JSON_OBJECT('writer', user.name, 'description', description, 'rating', rating)) AS rv
       FROM
         review
+      JOIN user ON user.id = writer
       GROUP BY
         recipe_id) AS review ON r.id = review.recipe_id
     WHERE r.id = ?

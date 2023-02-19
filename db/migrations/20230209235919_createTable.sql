@@ -14,8 +14,9 @@ CREATE TABLE recipe (
     amount varchar(50),
     spend_time varchar(50),
     level varchar(50),
-    scrap_num INTEGER,
+    scrap_num INTEGER default 0,
     img_url VARCHAR(300),
+    hit INTEGER default 0,
     created_at timestamp default now()
 );
 
