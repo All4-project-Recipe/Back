@@ -26,6 +26,29 @@ const signIn = async (user_Id, password, name, email) => {
 
 }
 
+const login = async (user_Id, password) => {
+  const existUserById = await userServie.signIn(user_Id);
+
+  if(!existUserById) {
+    throw {
+      status : 400,
+      message : "존재하지 않는 아이디입니다.",
+    };
+  }
+  
+  const isSame = bcrypt.compareSync(password, existUserById.password);
+  if (isSame === false) {
+    throw {
+      message: '비밀번호가 맞지 않습니다.',
+      status: 400,
+    };
+  }
+
+  const token = jwt.sign({ id: existUserById.id }, process.env.SECRET_KEY);
+  return token;
+}
+
 module.exports = {
     signIn,
+    login,
 }
