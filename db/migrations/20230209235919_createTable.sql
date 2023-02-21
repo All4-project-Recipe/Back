@@ -4,8 +4,7 @@ CREATE TABLE user (
     user_Id VARCHAR(20),
     password VARCHAR(100),
     name VARCHAR(200),
-    email VARCHAR(80),
-    kakao_id VARCHAR(30)
+    email VARCHAR(80)
 );
 
 CREATE TABLE recipe (
@@ -49,7 +48,8 @@ CREATE TABLE review (
     writer int REFERENCES user(id),
     recipe_id INTEGER REFERENCES recipe(id),
     description VARCHAR(500),
-    rating INTEGER
+    rating INTEGER,
+    created_at timestamp default now()
 );
 
 CREATE TABLE scrap (
