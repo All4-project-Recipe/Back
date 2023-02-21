@@ -1,6 +1,6 @@
 const database = require('./database');
 
-const signIn = async (user_Id, hashedPassword, name, email) => {
+const signUp = async (user_Id, hashedPassword, name, email) => {
   await database.query(`
     INSERT INTO
       user (user_id, password, name, email)
@@ -10,13 +10,15 @@ const signIn = async (user_Id, hashedPassword, name, email) => {
 }
 
 const existUserById = async (user_Id) => {
+  console.log(user_Id);
+  console.log("1");
   const [result] = await database.query(`
     SELECT
       *
     FROM
       user
     WHERE
-      user_Id = ?
+      user_Id = (?)
   `, [user_Id]);
 
   return result;
@@ -35,7 +37,7 @@ const existUserByEmail = async (email) => {
 }
 
 module.exports = {
-  signIn,
+  signUp,
   existUserById,
   existUserByEmail,
 }
