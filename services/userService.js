@@ -2,9 +2,9 @@ const userDAO = require('../models/userDAO');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
-const signIn = async (user_Id, password, name, email) => {
+const signUp = async (user_Id, password, name, email) => {
 
-  const existUserById = await userDAO.existUserById(user_id);
+  const existUserById = await userDAO.existUserById(user_Id);
   if(existUserById) {
     throw {
       message: '중복된 아이디입니다.',
@@ -22,12 +22,14 @@ const signIn = async (user_Id, password, name, email) => {
 
   const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync());
 
-  await userDAO.signIn(user_Id, hashedPassword, name, email);
+  await userDAO.signUp(user_Id, hashedPassword, name, email);
 
 }
 
 const login = async (user_Id, password) => {
-  const existUserById = await userServie.signIn(user_Id);
+  const existUserById = await userDAO.existUserById(user_Id);
+
+  console.log(existUserById);
 
   if(!existUserById) {
     throw {
@@ -49,6 +51,6 @@ const login = async (user_Id, password) => {
 }
 
 module.exports = {
-    signIn,
+    signUp,
     login,
 }

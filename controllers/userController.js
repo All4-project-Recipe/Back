@@ -1,11 +1,11 @@
 const userService = require('../services/userService');
 const { checkDataIsNotEmpty } = require('../utils/myutils');
 
-const signIn = async (req, res) => {
+const signUp = async (req, res) => {
   const { user_Id, password, name, email } = req.body;
   checkDataIsNotEmpty({ user_Id, password, name, email });
-  await userService.signIn(user_Id, password, name, email);
-  res.status(201).body({message : "회원가입 완료"});
+  await userService.signUp(user_Id, password, name, email);
+  res.status(201).json({message : "회원가입 완료"});
 }
 
 const login = async (req, res) => {
@@ -16,6 +16,6 @@ const login = async (req, res) => {
 }
 
 module.exports = {
-  signIn,
+  signUp,
   login,
 }
