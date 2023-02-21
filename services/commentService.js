@@ -1,6 +1,16 @@
 const commentDAO = require('../models/commentDAO');
 
 const createComment = async (writer, recipe_id, description) => {
+  const result = await commentDAO.existComment(writer, recipe_id);
+  console.log(result);
+
+  if(result) {
+    throw {
+      message: 'CAN NOT DUPLICATE COMMENT',
+      status: 400,
+    };
+  }
+  
   await commentDAO.createComment(writer, recipe_id, description);
 }
 

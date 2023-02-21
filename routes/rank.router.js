@@ -5,6 +5,6 @@ const {
 } = require('../controllers/rankController.js');
 const router = express.Router();
 
-router.get('/rank', asyncWrap(rankRecipe));
+router.get("", asyncWrap(rankRecipe));
 
 module.exports = router;

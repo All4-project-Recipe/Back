@@ -5,15 +5,18 @@ const middleware = require('../middlewares/middleware');
 const userRouter = require('./user.router');
 const commentRouter = require('./comment.router');
 const reviewRouter = require('./review.router');
+const recipeRouter = require('./recipe.router');
 const scrapRouter = require('./scrap.router');
 const rankRouter = require('./rank.router');
 const checkRouter = require('./check.router');
+
 
 const router = express.Router();
 
 router.use("/user", userRouter);
 router.use("/comment", commentRouter);
 router.use("/review", reviewRouter);
+router.use("/recipe", recipeRouter);
 router.use("/scrap", scrapRouter);
 router.use("/rank", rankRouter);
 router.use("/check", checkRouter);

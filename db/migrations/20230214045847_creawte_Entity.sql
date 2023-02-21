@@ -136,11 +136,8 @@ INSERT INTO step (recipe_id, recipe_num, description) VALUES
 (10, 6, "위스키하이볼 완성입니다. 레몬 한 조각을 올려주면 한 끗 차이로 분위기 좋은 술집에 온 기분이 들지요.");
 
 
-INSERT INTO review (writer, recipe_id, description, rating) VALUES 
-(1, 1, "존맛", 5), 
-(2, 1, "노맛", 1),
-(3, 2, "노맛", 1)
-(4, 3, "평범", 3);
+INSERT INTO review (writer, recipe_id, description, rating) VALUES
+(1, 1, "존맛", 5), (2, 1, "노맛", 1), (1, 2, "존맛", 5), (2, 2, "괜찮네요", 4), (3, 2, "왜 먹음?", 0),
+(1, 3, "마시따", 5), (2, 3, "쏘쏘", 3), (1, 4, "마싯네요", 5), (3, 4, "굿굿", 5);
 
 -- migrate:down
-
