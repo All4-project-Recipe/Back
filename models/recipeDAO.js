@@ -17,6 +17,7 @@ const getAllRecipe = async () => {
       c.created_at,
       st.step,
       review.rv,
+      r.img_url,
       r.hit,
       review.avgRating,
       r.created_at
@@ -82,6 +83,7 @@ const getRecipeById = async (id) => {
       c.description,
       c.created_at,
       st.step,
+      r.img_url,
       r.hit,
       review.rv,
       review.avgRating,
@@ -148,14 +150,14 @@ const createRecipe = async (writer, title, description, amount, spend_time, leve
   `, [recipe_id.id ,item.name, item.amount]);
   });
   
-  // step.forEach(async (item) => {
-  //   await database.query(`
-  //   INSERT INTO
-  //     step (recipe_id, recipe_num, description)
-  //   VALUES
-  //     (?, ?, ?)
-  // `, [recipe_id.id ,item.recipe_num, item.description]);
-  // });
+  step.forEach(async (item) => {
+    await database.query(`
+    INSERT INTO
+      step (recipe_id, recipe_num, description)
+    VALUES
+      (?, ?, ?)
+  `, [recipe_id.id ,item.recipe_num, item.description]);
+  });
 }
 
 module.exports = {

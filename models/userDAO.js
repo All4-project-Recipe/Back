@@ -10,8 +10,6 @@ const signUp = async (user_Id, hashedPassword, name, email) => {
 }
 
 const existUserById = async (user_Id) => {
-  console.log(user_Id);
-  console.log("1");
   const [result] = await database.query(`
     SELECT
       *
