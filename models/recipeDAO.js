@@ -51,7 +51,7 @@ const getAllRecipe = async () => {
   `)
   .then((answer) => {
     return [...answer].map((item)=> {
-      return {...item, igd: JSON.parse('[' + item.igd + ']'), rv: JSON.parse('[' + item.rv + ']')}}
+      return {...item, igd: JSON.parse('[' + item.igd + ']'), rv: JSON.parse('[' + item.rv + ']'), step: JSON.parse('[' + item.step + ']')}}
     )
   });
   return result;

@@ -8,6 +8,7 @@ const reviewRouter = require('./review.router');
 const recipeRouter = require('./recipe.router');
 const scrapRouter = require('./scrap.router');
 const rankRouter = require('./rank.router');
+const mypageRouter = require('./mypage.router');
 
 
 const router = express.Router();
@@ -18,6 +19,7 @@ router.use("/review", reviewRouter);
 router.use("/recipe", recipeRouter);
 router.use("/scrap", scrapRouter);
 router.use("/rank", rankRouter);
+router.use("/mypage", mypageRouter);
 router.use(middleware.errorHandler);
 // router.use(otherRouter);
 
