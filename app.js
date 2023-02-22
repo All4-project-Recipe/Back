@@ -16,6 +16,7 @@ const createApp = () => {
 
   app.use(cors(corsOption));
   app.use(express.json());
+  app.use(express.static('uploads'));
   app.use(morgan(morganCustomFormat));
   app.use(router);
   fileManager.makeUploadFolder();

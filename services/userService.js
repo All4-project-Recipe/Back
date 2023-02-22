@@ -29,7 +29,6 @@ const signUp = async (user_Id, password, name, email) => {
 const login = async (user_Id, password) => {
   const existUserById = await userDAO.existUserById(user_Id);
 
-  console.log(existUserById);
 
   if(!existUserById) {
     throw {
