@@ -11,7 +11,11 @@ const getRecipeById = async (id) => {
   return result;
 }
 
-const createRecipe = async (writer, title, description, amount, spend_time, level, thumbnail, ingredients, step) => {
+const createRecipe = async (token, title, description, amount, spend_time, level, thumbnail, ingredients, step) => {
+  
+  const user = jwt.verify(token, process.env.SECRET_KEY);
+  console.log(user);
+
   await recipeDAO.createRecipe(writer, title, description, amount, spend_time, level, thumbnail, ingredients, step);
 }
 

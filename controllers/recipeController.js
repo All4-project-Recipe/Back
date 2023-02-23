@@ -13,9 +13,9 @@ const getRecipeById = async (req, res) => {
 }
 
 const createRecipe = async(req, res) => {
-  const { writer, title, description, amount, spend_time, level, thumbnail, ingredients, step }  = req.body;
-  checkDataIsNotEmpty({ writer, title, description });
-  await recipeService.createRecipe(writer, title, description, amount, spend_time, level, thumbnail, ingredients, step);
+  const { token, title, description, amount, spend_time, level, thumbnail, ingredients, step }  = req.body;
+  // checkDataIsNotEmpty({ token, title, description });
+  await recipeService.createRecipe(token, title, description, amount, spend_time, level, thumbnail, ingredients, step);
   res.status(201).json({ message : "DONE"});
 }
 
