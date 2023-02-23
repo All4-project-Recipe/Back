@@ -9,7 +9,7 @@ const {
 
 const router = express.Router();
 
-router.get("", asyncWrap(getAllRecipe));
+router.get("/all", asyncWrap(getAllRecipe));
 router.get("/:id", asyncWrap(getRecipeById));
 router.post("", asyncWrap(fileManager.upload.single('thumbnail')), asyncWrap(createRecipe));
 

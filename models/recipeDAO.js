@@ -68,7 +68,7 @@ const getRecipeById = async (id) => {
     WHERE recipe.id = ?
   `,[id])
 
-  const result = await database.query(`
+  const [result] = await database.query(`
     SELECT DISTINCT
       r.id,
       r.title,
